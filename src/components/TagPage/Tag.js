@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import TagYearTable from "./TagYearTable.js";
-import TagPointTable from "./TagPointTable.js";
+import PointBarChart from "./PointBarChart.js";
 
 function Tag({tag, years, points, yearsdata, pointsdata, selections, setSelections}){
     const history = useHistory()
@@ -22,7 +22,7 @@ function Tag({tag, years, points, yearsdata, pointsdata, selections, setSelectio
             </div>
             <div className="dataTables">
                 <TagYearTable years={years} data={yearsdata}/>
-                <TagPointTable points={points} data={pointsdata} />
+                <PointBarChart data={pointsdata} />
             </div>
         </div>
     )

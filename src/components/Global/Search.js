@@ -48,7 +48,7 @@ function SearchBar({selections, setSelections}){
     }
 
     return (
-        <div>
+        <div className="searchBar">
             <input type="text" placeholder="Search for Tag..." onChange={(e) => {setSearchTerm(e.target.value)}}></input>
             <button onClick={(e) => handleClick(e)}>Search</button>
         </div>

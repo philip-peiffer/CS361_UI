@@ -17,7 +17,7 @@ function LandingPage({selections, setSelections}){
     }
     
     return (
-        <div>
+        <div className='landingPage'>
             <Title titlestring={'Draw Odds Calculator - Montana'} selections={selections} setSelections={setSelections} />
             <Selections selections={selections}></Selections>
             <SelectSpecies selections={selections} setSelections={setSelections} />
@@ -46,7 +46,7 @@ function LandingPage({selections, setSelections}){
                 </p>
             </section>
 
-            <button type='button' onClick={navigateToRegions}>Let's Go!</button>
+            <button type='button' id="startButton" onClick={navigateToRegions}>Let's Go!</button>
         </div>
     
     )
