@@ -5,12 +5,12 @@ import Title from '../components/Global/Title'
 import Tag from '../components/TagPage/Tag'
 
 function TagPage({selections, setSelections}){
-    const [fetchData, setFetchData] = useState([])
+    const [tagData, setTagData] = useState([])
 
     const loadData = async () => {
-        let fetchResponse = await fetch(`http://localhost:5000/residency/${selections.residency}/species/${selections.species}/region/${selections.region}/district/${selections.district}/tags`)
-        let fetchBody = await fetchResponse.json()
-        setFetchData(fetchBody.data)
+        let fetchTags = await fetch(`http://localhost:5000/residency/${selections.residency}/species/${selections.species}/region/${selections.region}/district/${selections.district}/tags`)
+        let tagData = await fetchTags.json()
+        setTagData(tagData.data)
     }
 
     useEffect(() => {
@@ -22,9 +22,9 @@ function TagPage({selections, setSelections}){
             <Title titlestring={'Tag Breakdown'} selections={selections} setSelections={setSelections}/>
             <Selections selections={selections} />
             <SearchBar selections={selections} setSelections={setSelections}/>
-            {fetchData.map((data, index) => {
+            {tagData.map((data, index) => {
                 return (
-                    <Tag key={index} tag={data.tag} years={data.years} points={data['point cats']} yearsdata={data['year stats']} pointsdata={data['point stats']} selections={selections} setSelections={setSelections} />
+                    <Tag key={index} data={data} selections={selections} setSelections={setSelections} />
                 )
             })}
         </div>

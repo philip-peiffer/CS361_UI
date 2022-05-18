@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import TagYearTable from "./TagYearTable.js";
 import PointBarChart from "./PointBarChart.js";
 
-function Tag({tag, years, points, yearsdata, pointsdata, selections, setSelections}){
+function Tag({data, selections, setSelections}){
     const history = useHistory()
 
     function handleSelect(e){
@@ -17,12 +17,12 @@ function Tag({tag, years, points, yearsdata, pointsdata, selections, setSelectio
     return(
         <div className="datagroup">
             <div className="sectionTitle">
-                <h3>Tag {tag}</h3>
-                <button name="tag" value={tag} onClick={handleSelect}>Select Tag {tag}</button>
+                <h3>Tag {data.tag}</h3>
+                <button name="tag" value={data.tag} onClick={handleSelect}>Select Tag {data.tag}</button>
             </div>
             <div className="dataTables">
-                <TagYearTable years={years} data={yearsdata}/>
-                <PointBarChart data={pointsdata} />
+                <TagYearTable years={data.years} data={data['year stats']}/>
+                <PointBarChart data={data['point stats']} />
             </div>
         </div>
     )
