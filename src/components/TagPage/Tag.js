@@ -24,6 +24,11 @@ function Tag({data, selections, setSelections}){
                 <TagYearTable years={data.years} data={data['year stats']}/>
                 <PointBarChart data={data['point stats']} />
             </div>
+            <div className="predictions">
+                <p>This is my predictions area</p>
+                <input type="text" />
+                <button>Click to Calculate Draw Odds</button>
+            </div>
         </div>
     )
 }
