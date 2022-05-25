@@ -1,7 +1,6 @@
 import React from "react";
 
 function DistrictTable({years, data}){
-    let cats = Object.keys(data)
     
     return (
         <div>
@@ -17,18 +16,30 @@ function DistrictTable({years, data}){
                     </tr>
                 </thead>
                 <tbody>
-                    {cats.map((cat, index) => {
-                        return (
-                            <tr key={cat}>
-                                <td key={index}>{cat}</td>
-                                {
-                                    data[cat].map((datapoint, index) => {
-                                        return(<td key={index}>{datapoint}</td>)
-                                    })
-                                }
-                            </tr>
-                        )
-                    })}
+                    <tr>
+                        <td>Apps</td>
+                        {data.map((year, index) => {
+                            return(<td key={index}>{year.applicants}</td>)
+                        })}
+                    </tr>
+                    <tr>
+                        <td>Successful</td>
+                        {data.map((year, index) => {
+                            return(<td key={index}>{year.successes}</td>)
+                        })}
+                    </tr>
+                    <tr>
+                        <td>{'% Success'}</td>
+                        {data.map((year, index) => {
+                            return(<td key={index}>{year['% success']}</td>)
+                        })}
+                    </tr>
+                    <tr>
+                        <td>{'Pts/App'}</td>
+                        {data.map((year, index) => {
+                            return(<td key={index}>{year['avg pt per app']}</td>)
+                        })}
+                    </tr>
                 </tbody>
             </table>
 

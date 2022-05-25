@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import DistrictTable from "./DistrictTable.js";
 
-function District({district, years, data, selections, setSelections}){
+function District({districtInfo, selections, setSelections}){
     const history = useHistory()
 
     function handleSelect(e){
@@ -16,11 +16,11 @@ function District({district, years, data, selections, setSelections}){
     return(
         <div className="datagroup">
             <div className="sectionTitle">
-                <h3>District {district}</h3>
-                <button name="district" value={district} onClick={handleSelect}>Select District {district}</button>
+                <h3>District {districtInfo.district}</h3>
+                <button name="district" value={districtInfo.district} onClick={handleSelect}>Select District {districtInfo.district}</button>
             </div>
             <div className="dataTables">
-                <DistrictTable years={years} data={data}/>
+                <DistrictTable years={districtInfo.years} data={districtInfo['year stats']}/>
             </div>
         </div>
     )
