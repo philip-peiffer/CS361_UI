@@ -3,7 +3,7 @@ import SearchBar from '../components/Global/Search'
 import Selections from '../components/Global/Selections'
 import Title from '../components/Global/Title'
 import Tag from '../components/TagPage/Tag'
-import YearComparisonChart from '../components/TagPage/YearComparisonChart'
+import YearComparisonChart from '../components/Global/YearComparisonChart'
 
 function TagPage({selections, setSelections}){
     const [tagData, setTagData] = useState([])

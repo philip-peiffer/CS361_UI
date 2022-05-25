@@ -3,6 +3,7 @@ import Selections from '../components/Global/Selections.js'
 import District from '../components/DistrictPage/District.js'
 import Title from '../components/Global/Title.js'
 import SearchBar from '../components/Global/Search.js'
+import YearComparisonChart from '../components/Global/YearComparisonChart.js'
 
 function DistrictPage({selections, setSelections}){
     const [districtData, setDistrictData] = useState([])
@@ -54,6 +55,11 @@ function DistrictPage({selections, setSelections}){
             <Title titlestring={'District Selection'} selections={selections} setSelections={setSelections}/>
             <Selections selections={selections}></Selections>
             <SearchBar selections={selections} setSelections={setSelections}/>
+            {lineCats.map((cat, index) => {
+                return (
+                    <YearComparisonChart key={index} data={lineData[cat]} category={cat} />
+                )
+            })}
             {districtData.map((district, index) => {
                 return (
                     <District key={index} districtInfo={district} selections={selections} setSelections={setSelections} />
