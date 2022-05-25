@@ -1,7 +1,7 @@
 import React from "react";
 import {LineChart, Line, Legend, CartesianGrid, Tooltip, XAxis, YAxis} from 'recharts'
 
-function YearComparisonChart({data, category}) {
+function YearComparisonChartTag({data, category}) {
     const dataKeys = Object.keys(data[0])
     const colors = ["red", "black", "dodgerblue", "olive", "darkcyan", "FireBrick", "LightPink", "orchid"]
 
@@ -14,6 +14,7 @@ function YearComparisonChart({data, category}) {
                 <YAxis />
                 <Tooltip />
                 <Legend />
+                
                 {dataKeys.map((key, index) => {
                     if (key !== 'year') {
                         return (<Line key={index} type="monotone" dataKey={key} stroke={colors[index]} />)
@@ -24,4 +25,4 @@ function YearComparisonChart({data, category}) {
     )
 }
 
-export default YearComparisonChart
+export default YearComparisonChartTag

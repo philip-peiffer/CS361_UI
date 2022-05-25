@@ -3,7 +3,7 @@ import SearchBar from '../components/Global/Search'
 import Selections from '../components/Global/Selections'
 import Title from '../components/Global/Title'
 import Tag from '../components/TagPage/Tag'
-import YearComparisonChart from '../components/Global/YearComparisonChart'
+import YearComparisonChartTag from '../components/TagPage/YearComparisonChartTag'
 
 function TagPage({selections, setSelections}){
     const [tagData, setTagData] = useState([])
@@ -56,7 +56,7 @@ function TagPage({selections, setSelections}){
             <SearchBar selections={selections} setSelections={setSelections}/>
             {lineCats.map((cat, index) => {
                 return (
-                    <YearComparisonChart key={index} data={lineData[cat]} category={cat} />
+                    <YearComparisonChartTag key={index} data={lineData[cat]} category={cat} />
                 )
             })}
             {tagData.map((data, index) => {
