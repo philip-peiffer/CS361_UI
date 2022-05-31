@@ -8,7 +8,7 @@ function DistrictPage({selections, setSelections}){
     const [districtData, setDistrictData] = useState([])
 
     const loadData = async () => {
-        let fetchResponse = await fetch(`http://localhost:5000/residency/${"resident"}/species/${"elk"}/region/${1}/districts`)
+        let fetchResponse = await fetch(`http://localhost:5000/residency/${selections.residency}}/species/${selections.species}/region/${selections.region}/districts`)
         let fetchBody = await fetchResponse.json()
         setDistrictData(fetchBody.data)
     }
