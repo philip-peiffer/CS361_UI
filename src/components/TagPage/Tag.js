@@ -1,24 +1,37 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, {useState} from "react";
 import TagYearTable from "./TagYearTable.js";
 import PointBarChart from "./PointBarChart.js";
 
 function Tag({data, selections, setSelections}){
-    const history = useHistory()
-
-    function handleSelect(e){
-        setSelections({
-            ...selections,
-            [e.target.name]: e.target.value
+    const [drawOdds, setDrawOdds] = useState({tag: '', 'num tags': 0, 'calculated': [], 'calculated success perc': [100, 0, 0, 0]})
+    const [points, setPoints] = useState(0)
+    
+    async function handleSelect(e){
+        // get body of fetch in correct format
+        let body = {'tag': data.tag, 'num tags': 0, 'calculated': []}
+        data['point stats'].forEach(pointCat => {
+            body['num tags'] += pointCat['successes']
+            body['calculated'].push(pointCat['future apps'])
         })
-        console.log(`you selected ${e.target.value}`)
+
+        // fetch draw odds info
+        fetch('http://localhost:58555/predictions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        .then(drawSimulResponse => drawSimulResponse.json())
+        .then(drawOddsInfo => setDrawOdds(drawOddsInfo))
+        .catch(err => console.error(err))
     }
 
     return(
         <div className="datagroup">
             <div className="sectionTitle">
                 <h3>Tag {data.tag}</h3>
-                <button name="tag" value={data.tag} onClick={handleSelect}>Select Tag {data.tag}</button>
+                <div>See Odds Calculator Below!</div>
             </div>
             <div className="dataTables">
                 <TagYearTable years={data.years} data={data['year stats']}/>
@@ -26,8 +39,18 @@ function Tag({data, selections, setSelections}){
             </div>
             <div className="predictions">
                 <p>This is my predictions area</p>
-                <input type="text" />
-                <button>Click to Calculate Draw Odds</button>
+                <label for="points">Enter Your # of Points:</label>
+                <input type="number" min="0" max="20" id="points" placeholder="0" onClick={(e) => setPoints(e.target.value)}/>
+                <button onClick={handleSelect}>Calculate Draw Odds</button>
+                <div>
+                    {drawOdds['calculated success perc'].map((pointCat, index) => {
+                        return (
+                            <li key={index}>
+                                {pointCat}
+                            </li>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

@@ -38,43 +38,11 @@ function TagPage({selections, setSelections}){
         setLineData(returnDict)
     }
 
-    function reformatDataForForecast (data) {
-        data.forEach(tag => {
-            let forecast = {'prevYearApplication': [], 'prevYearSuccess': []}
-            tag['point stats'].forEach(pointCat => {
-                forecast.prevYearApplication[pointCat.points] = pointCat.applicants
-                forecast.prevYearSuccess[pointCat.points] = pointCat.successes
-            })
-            tag.forecast = forecast
-        })
-    }
-
-    async function forecastData (forecastData) {
-        let response = await fetch('http://localhost:58585/calculate_odds', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(forecastData)
-        })
-
-        let responseBody = await response.json()
-        forecastData.calculated = responseBody.calculated
-    }
-
     const loadData = async () => {
         let fetchTags = await fetch(`http://localhost:5000/residency/${selections.residency}/species/${selections.species}/region/${selections.region}/district/${selections.district}/tags`)
         let fetchedTagData = await fetchTags.json()
         reformatDataForYearChart(fetchedTagData.data)
-        reformatDataForForecast(fetchedTagData.data)
-
-        // call sean's microservice to forecast the data
-        fetchedTagData.data.forEach(tag => {
-            forecastData(tag.forecast)
-        })
-
         setTagData(fetchedTagData.data)
-        console.log(fetchedTagData.data)
     }
 
     useEffect(() => {
