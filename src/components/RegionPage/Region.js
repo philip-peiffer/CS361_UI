@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import RegionTable from "./RegionTable.js";
 import YearComparisonChartDistrict from "../DistrictPage/YearComparisonChartDistrict.js";
 
 function Region({regionInfo, selections, setSelections}){
@@ -24,7 +23,6 @@ function Region({regionInfo, selections, setSelections}){
                 </p>
             </div>
             <div className="dataTables">
-                {/* <DistrictTable years={districtInfo.years} data={districtInfo['year stats']}/> */}
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['applicants', 'pts spent', 'successes'], rightcategory: null}} />
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['avg pt per app'], rightcategory: null}}/>
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['% success'], rightcategory: null}}/>
