@@ -22,7 +22,7 @@ function Region({regionInfo, selections, setSelections}){
                     A description of Region {regionInfo.region} goes here
                 </p>
             </div>
-            <div className="dataTables">
+            <div className="dataCharts">
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['applicants', 'pts spent', 'successes'], rightcategory: null}} />
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['avg pt per app'], rightcategory: null}}/>
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['% success'], rightcategory: null}}/>

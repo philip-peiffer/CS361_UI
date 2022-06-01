@@ -108,6 +108,11 @@ input {
   margin: 1em 1em;
 }
 
+.dataCharts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .dataTables div {
   margin: 1em 1em;
 }
