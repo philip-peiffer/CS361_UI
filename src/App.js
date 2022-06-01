@@ -24,7 +24,11 @@ function App() {
           <DistrictPage selections={selections} setSelections={setSelections}/>
         </Route>
         
-        <Route path="/tags">
+        <Route exact path="/tags">
+          <TagPage selections={selections} setSelections={setSelections}/>
+        </Route>
+
+        <Route exact path="/tags/:tag_id">
           <TagPage selections={selections} setSelections={setSelections}/>
         </Route>
       </Router>
