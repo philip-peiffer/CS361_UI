@@ -29,6 +29,11 @@ button {
   border-color: #9c9c9c;
 }
 
+input {
+  margin-right: 0.5em;
+  min-height: 2em;
+}
+
 /* ---------- END GLOBAL CSS ----------------- */
 
 /* ---------- LANDING PAGE CSS ----------------- */
@@ -63,15 +68,6 @@ button {
   padding: 0.35em;
 }
 
-.searchBar > input {
-  margin-right: 0.5em;
-  min-height: 2em;
-}
-
-.searchBar > button {
-
-}
-
 /* ---------- END SEARCH BAR CSS ------------ */
 
 /* ---------- DATA GROUP/TABLES CSS ----------- */
@@ -87,6 +83,8 @@ button {
 
 .comparisonTitle {
   margin: auto auto auto 40%;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .datagroup {
