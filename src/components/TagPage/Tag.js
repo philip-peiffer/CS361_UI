@@ -1,18 +1,32 @@
 import React, {useState} from "react";
 import TagYearTable from "./TagYearTable.js";
 import PointBarChart from "./PointBarChart.js";
+import SimpleTable from "./SimpleTable.js";
 
 function Tag({data, selections, setSelections}){
-    const [drawOdds, setDrawOdds] = useState({tag: '', 'num tags': 0, 'calculated': [], 'calculated success perc': [100, 0, 0, 0]})
+    const [futureApps, setFutureApps] = useState([])
+    const [drawOdds, setDrawOdds] = useState([])
     const [points, setPoints] = useState(0)
-    
-    async function handleSelect(e){
-        // get body of fetch in correct format
+
+    function prepareBodyData() {
         let body = {'tag': data.tag, 'num tags': 0, 'calculated': []}
+        let newDrawOdds = []
         data['point stats'].forEach(pointCat => {
             body['num tags'] += pointCat['successes']
             body['calculated'].push(pointCat['future apps'])
+            newDrawOdds.push('tbd')
         })
+
+        // add the user to the "calculated" number of applicants in their category of points they've chosen
+        body['calculated'][points] += 1
+        setFutureApps(body['calculated'])
+        setDrawOdds(newDrawOdds)
+        return body
+    }
+    
+    async function handleSelect(e){
+        // get body of fetch in correct format
+        let body = prepareBodyData()
 
         // fetch draw odds info
         fetch('http://localhost:58555/predictions', {
@@ -23,7 +37,7 @@ function Tag({data, selections, setSelections}){
             body: JSON.stringify(body)
         })
         .then(drawSimulResponse => drawSimulResponse.json())
-        .then(drawOddsInfo => setDrawOdds(drawOddsInfo))
+        .then(drawOddsInfo => setDrawOdds(drawOddsInfo['calculated success perc']))
         .catch(err => console.error(err))
     }
 
@@ -38,19 +52,12 @@ function Tag({data, selections, setSelections}){
                 <PointBarChart data={data['point stats']} />
             </div>
             <div className="predictions">
-                <p>This is my predictions area</p>
+                <p>Year 2022 Application Predictions</p>
                 <label for="points">Enter Your # of Points:</label>
-                <input type="number" min="0" max="20" id="points" placeholder="0" onClick={(e) => setPoints(e.target.value)}/>
+                <input type="number" min="0" max="20" id="points" placeholder="0" onChange={(e) => setPoints(e.target.value)}/>
                 <button onClick={handleSelect}>Calculate Draw Odds</button>
-                <div>
-                    {drawOdds['calculated success perc'].map((pointCat, index) => {
-                        return (
-                            <li key={index}>
-                                {pointCat}
-                            </li>
-                        )
-                    })}
-                </div>
+                <SimpleTable data={futureApps} titleString={"Predicted Applicants"} />
+                <SimpleTable data={drawOdds} titleString={"% Chance of Drawing"} />
             </div>
         </div>
     )

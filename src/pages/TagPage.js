@@ -54,11 +54,13 @@ function TagPage({selections, setSelections}){
             <Title titlestring={'Tag Breakdown'} selections={selections} setSelections={setSelections}/>
             <Selections selections={selections} />
             <SearchBar selections={selections} setSelections={setSelections}/>
-            {lineCats.map((cat, index) => {
-                return (
-                    <YearComparisonChartTag key={index} data={lineData[cat]} category={cat} />
-                )
-            })}
+            <div className='comparisonChartArea'>
+                {lineCats.map((cat, index) => {
+                    return (
+                        <YearComparisonChartTag key={index} data={lineData[cat]} category={cat} />
+                    )
+                })}
+            </div>
             {tagData.map((data, index) => {
                 return (
                     <Tag key={index} data={data} selections={selections} setSelections={setSelections} />
