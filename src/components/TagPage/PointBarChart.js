@@ -6,7 +6,7 @@ function PointBarChart({data}) {
         <div className="pointBarChart">
             <BarChart width={750} height={500} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="points" label={{ value: 'Point Category', position: 'insideBottom' }}/>
+                <XAxis dataKey="points" label={{ value: 'Point Category', position: 'insideBottom', offset: -3}}/>
                 <YAxis yAxisId="left" orientation="left" label={{ value: 'Num People', angle: -90, position: 'insideLeft' }}/>
                 <YAxis yAxisId="right" orientation="right" stroke="#f76565" label={{ value: 'Points', angle: -90, position: 'insideRight' }}/>
                 <Tooltip />
