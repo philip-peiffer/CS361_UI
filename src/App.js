@@ -5,6 +5,7 @@ import DistrictPage from './pages/DistrictPage.js';
 import LandingPage from './pages/LandingPage.js';
 import RegionPage from './pages/RegionPage.js';
 import TagPage from './pages/TagPage.js';
+import SingleTagPage from './pages/SingleTagPage';
 
 function App() {
   const [selections, setSelections] = useState({species: null, residency: null, region: null, district: null, tag: null})
@@ -29,7 +30,7 @@ function App() {
         </Route>
 
         <Route exact path="/tags/:tag_id">
-          <TagPage selections={selections} setSelections={setSelections}/>
+          <SingleTagPage selections={selections} setSelections={setSelections}/>
         </Route>
       </Router>
 

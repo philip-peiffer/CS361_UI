@@ -45,7 +45,7 @@ function SearchBar({selections, setSelections}){
                     district: userInput.district,
                     tag: searchTerm
                 })
-
+            
                 history.push(`/tags/${searchTerm}`)
             } else {
                 alert("Hmmm... looks like that tag doesn't exist! Please select the region and district you'd like to view.")
