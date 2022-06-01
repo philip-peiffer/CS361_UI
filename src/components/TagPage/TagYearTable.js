@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 function TagYearTable({years, data}){
     
     return (
-        <div>
+        <div className="dataTables">
             <table>
                 <thead>
                     <tr>

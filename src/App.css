@@ -104,6 +104,8 @@ input {
 .dataTables {
   display: flex;
   flex-wrap: wrap;
+  height: fit-content;
+  margin: 1em 1em;
 }
 
 .dataTables div {

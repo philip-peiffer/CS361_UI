@@ -47,10 +47,8 @@ function Tag({data, selections, setSelections}){
                 <h3>Tag {data.tag}</h3>
                 <div>See Odds Calculator Below!</div>
             </div>
-            <div className="dataTables">
-                <TagYearTable years={data.years} data={data['year stats']}/>
-                <PointBarChart data={data['point stats']} />
-            </div>
+            <TagYearTable years={data.years} data={data['year stats']}/>
+            <PointBarChart data={data['point stats']} />
             <div className="predictions">
                 <p>Year 2022 Application Predictions</p>
                 <label htmlFor="points">Enter Your # of Points:</label>
