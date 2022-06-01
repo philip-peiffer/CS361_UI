@@ -53,7 +53,7 @@ function Tag({data, selections, setSelections}){
             </div>
             <div className="predictions">
                 <p>Year 2022 Application Predictions</p>
-                <label for="points">Enter Your # of Points:</label>
+                <label htmlFor="points">Enter Your # of Points:</label>
                 <input type="number" min="0" max="20" id="points" placeholder="0" onChange={(e) => setPoints(e.target.value)}/>
                 <button onClick={handleSelect}>Calculate Draw Odds</button>
                 <SimpleTable data={futureApps} titleString={"Predicted Applicants"} />
