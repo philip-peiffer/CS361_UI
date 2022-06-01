@@ -115,6 +115,10 @@ input {
   padding: 1.5em;
 }
 
+.predictions label {
+  margin-right: 0.5em;
+}
+
 .simpleTable {
   margin: 10px auto;
   text-align: center;
