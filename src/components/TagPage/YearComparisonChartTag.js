@@ -7,7 +7,7 @@ function YearComparisonChartTag({data, category}) {
 
     return (
         <div className="yearComparisonChart">
-            <div>{category}</div>
+            <div className="comparisonTitle">{category}</div>
             <LineChart width={375} height={250} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="year" />
