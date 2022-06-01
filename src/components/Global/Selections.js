@@ -5,7 +5,7 @@ function Selections({selections}){
     let keys = Object.keys(selections)
 
     return (
-        <ul className="selectionMap"> Selections
+        <ul className="selectionMap"> Parameters Selected...
             {keys.map((selection) => {
                 if (selections[selection] === null) {
                     return
