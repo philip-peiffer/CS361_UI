@@ -18,9 +18,6 @@ function Region({regionInfo, selections, setSelections}){
             <div className="sectionTitle">
                 <h3>Region {regionInfo.region}</h3>
                 <button name="region" value={regionInfo.region} onClick={handleSelect}>Select Region {regionInfo.region}</button>
-                <p>
-                    A description of Region {regionInfo.region} goes here
-                </p>
             </div>
             <div className="dataCharts">
                 <YearComparisonChartDistrict data={regionInfo['year stats']} categories={{leftcategory: ['applicants', 'pts spent', 'successes'], rightcategory: null}} />
